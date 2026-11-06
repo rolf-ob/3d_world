@@ -1,2 +1,1 @@
-cube drawing
-3d camera movement
+cube and camera rotation

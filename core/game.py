@@ -17,21 +17,11 @@ class Game:
 
         self.cubes = [
             Cube(
-                -50,
-                -50,
-                1,
-                100,
-                100,
-                2
-            ),
-            Cube(
-                +100,
-                -100,
-                2,
-                100,
-                100,
-                2
-            ),
+                x, y, 10,
+                1, 1, 1
+            )
+            for x in range(10)
+            for y in range(10)
         ]
 
         self.camera = Camera()

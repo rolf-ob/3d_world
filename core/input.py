@@ -12,9 +12,9 @@ def update_camera(game, keys):
     if keys[py.K_d]:
         game.camera.x += CAMERA_SPEED
     if keys[py.K_q]:
-        game.camera.z -= CAMERA_SPEED
-    if keys[py.K_e]:
         game.camera.z += CAMERA_SPEED
+    if keys[py.K_e]:
+        game.camera.z -= CAMERA_SPEED
 
 def handle_input(game: object) -> None:
     keys = py.key.get_pressed()
@@ -27,3 +27,7 @@ def handle_input(game: object) -> None:
 
         elif event.type == py.VIDEORESIZE:
             game.width, game.height = event.size
+
+        elif event.type == py.KEYDOWN:
+            if event.key == py.K_ESCAPE:
+                game.running = False
