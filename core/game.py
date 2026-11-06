@@ -15,7 +15,16 @@ class Game:
         self.width = WIDTH
         self.height = HEIGHT
 
-        self.cubes = [Cube(0, 0, 0, 20, 20, 20)]
+        self.cubes = [
+            Cube(
+                self.width / 2 - 100,
+                self.height / 2 - 100,
+                0,
+                100,
+                100,
+                100
+            ),
+        ]
 
         self.camera = Camera()
         self.frame_limiter = FrameLimiter()
