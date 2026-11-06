@@ -1,5 +1,5 @@
 class Cube:
-    def __init__(self, x, y, z, width, height, depth, roll=0, pitch=0, yaw=0):
+    def __init__(self, x: int, y: int, z: int, width: int, height: int, depth: int, roll=0, pitch=0, yaw=0):
         self.x=x
         self.y=y
         self.z=z

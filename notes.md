@@ -1,3 +1,2 @@
-frame limiter
-cube class
+cube drawing
 3d camera movement

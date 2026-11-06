@@ -1,6 +1,6 @@
 import pygame as py
 
-def draw(game):
+def draw(game: object) -> None:
     screen = game.screen
     screen.fill((255,)*3)
 

@@ -3,6 +3,8 @@ import pygame as py
 from core.input import handle_input
 from rendering.drawing import draw
 from entities.frame_limiter import FrameLimiter
+from entities.camera import Camera
+from entities.cube import Cube
 from constants import WIDTH, HEIGHT, FPS
 
 class Game:
@@ -13,6 +15,9 @@ class Game:
         self.width = WIDTH
         self.height = HEIGHT
 
+        self.cubes = [Cube(0, 0, 0, 20, 20, 20)]
+
+        self.camera = Camera()
         self.frame_limiter = FrameLimiter()
         self.screen = py.display.set_mode((self.width, self.height), py.RESIZABLE)
 
