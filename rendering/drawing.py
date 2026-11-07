@@ -1,6 +1,7 @@
 import pygame as py
 
 from core.spatial import world_to_screen
+from constants import FONT_SIZE
 
 def connect_corners(game, screen, corner1, corner2):
     point1 = world_to_screen(game, corner1[0], corner1[1], corner1[2])
@@ -22,6 +23,17 @@ def draw(game: object) -> None:
         for i, j in zip(range(4), range(4, 8)):
             connect_corners(game, screen, cube.corners[i], cube.corners[j])
 
-    fps = f"FPS: {round(game.frame_limiter.get_fps())}"
-    text_surface = game.font.render(fps, False, (0,)*3)
-    screen.blit(text_surface, (20, 20))
+    debug_items = [
+        f"FPS: {round(game.frame_limiter.get_fps())}",
+        f"Paused: {game.paused}",
+        f"X: {game.camera.x}",
+        f"Y: {game.camera.y}",
+        f"Z: {game.camera.z}",
+        f"Pitch: {game.camera.pitch}",
+        f"Yaw: {game.camera.yaw}"
+    ]
+
+    if game.debug:
+        for i, item in enumerate(debug_items):
+            text_surface = game.font.render(item, False, (0,)*3)
+            screen.blit(text_surface, (FONT_SIZE, i*FONT_SIZE))
