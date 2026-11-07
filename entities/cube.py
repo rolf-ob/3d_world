@@ -11,6 +11,7 @@ class Cube:
         self.roll=roll
         self.pitch=pitch
         self.yaw=yaw
+        self.corners = [(0, 0, 0),]*8
         self.recompute()
 
     def recompute(self):
