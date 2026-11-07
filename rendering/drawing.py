@@ -13,17 +13,15 @@ def draw(game: object) -> None:
     screen.fill((255,)*3)
 
     for cube in game.cubes:
-        connect_corners(game, screen, cube.corners[0], cube.corners[1])
-        connect_corners(game, screen, cube.corners[1], cube.corners[2])
-        connect_corners(game, screen, cube.corners[2], cube.corners[3])
-        connect_corners(game, screen, cube.corners[3], cube.corners[0])
-        
-        connect_corners(game, screen, cube.corners[4], cube.corners[5])
-        connect_corners(game, screen, cube.corners[5], cube.corners[6])
-        connect_corners(game, screen, cube.corners[6], cube.corners[7])
-        connect_corners(game, screen, cube.corners[7], cube.corners[4])
-        
-        connect_corners(game, screen, cube.corners[0], cube.corners[4])
-        connect_corners(game, screen, cube.corners[1], cube.corners[5])
-        connect_corners(game, screen, cube.corners[2], cube.corners[6])
-        connect_corners(game, screen, cube.corners[3], cube.corners[7])
+        for i in range(4):
+            connect_corners(game, screen, cube.corners[i], cube.corners[[1, 2, 3, 0][i]])
+
+        for i in range(4, 8):
+            connect_corners(game, screen, cube.corners[i], cube.corners[[5, 6, 7, 4][i-4]])
+
+        for i, j in zip(range(4), range(4, 8)):
+            connect_corners(game, screen, cube.corners[i], cube.corners[j])
+
+    fps = f"FPS: {round(game.frame_limiter.get_fps())}"
+    text_surface = game.font.render(fps, False, (0,)*3)
+    screen.blit(text_surface, (20, 20))

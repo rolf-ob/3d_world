@@ -1,1 +1,1 @@
-cube and camera rotation
+3d camera movement and rotation

@@ -21,8 +21,10 @@ class FrameLimiter:
         now = time.perf_counter()
         self.frame_times.append(now)
 
-        while self.frame_times[-1] + 1 <= now:
+        if len(self.frame_times) > 2:
             self.frame_times.popleft()
 
     def get_fps(self) -> int:
-        return len(self.frame_times)
+        if len(self.frame_times) == 2:
+            return 1 / (self.frame_times[1] - self.frame_times[0])
+        return 0
