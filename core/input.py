@@ -21,9 +21,9 @@ def update_camera(game, keys):
         game.camera.z -= sin_y * CAMERA_MOVEMENT_SPEED
     
     if keys[py.K_LSHIFT]:
-        game.camera.y += CAMERA_MOVEMENT_SPEED
-    if keys[py.K_SPACE]:
         game.camera.y -= CAMERA_MOVEMENT_SPEED
+    if keys[py.K_SPACE]:
+        game.camera.y += CAMERA_MOVEMENT_SPEED
 
 def handle_input(game: object) -> None:
     keys = py.key.get_pressed()
@@ -58,7 +58,7 @@ def handle_input(game: object) -> None:
             if game.mouse_locked:
                 yaw_movement, pitch_movement = event.rel
 
-                game.camera.pitch += pitch_movement
+                game.camera.pitch -= pitch_movement
                 game.camera.yaw += yaw_movement
 
                 game.camera.pitch = max(-90, min(90, game.camera.pitch))

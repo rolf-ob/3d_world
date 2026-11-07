@@ -25,6 +25,6 @@ def world_to_screen(game: object, Xworld: int, Yworld: int, Zworld: int) -> tupl
     Yproj = y2 / z2
 
     Xscreen = Xproj * game.fov_scale + game.width  / 2
-    Yscreen = Yproj * game.fov_scale + game.height / 2
+    Yscreen = -Yproj * game.fov_scale + game.height / 2
 
     return (Xscreen, Yscreen)
