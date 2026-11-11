@@ -27,6 +27,7 @@ def draw_debug(game, screen):
         f"X: {game.camera.x}",
         f"Y: {game.camera.y}",
         f"Z: {game.camera.z}",
+        f"Y velocity: {game.y_vel}",
         f"Pitch: {game.camera.pitch}",
         f"Yaw: {game.camera.yaw}"
     ]

@@ -1,6 +1,7 @@
 import pygame as py
 import math
 
+from core.physics import jump
 from constants import FOV, CAMERA_MOVEMENT_SPEED, CAMERA_ROTATION_SPEED
 
 def update_camera(game, keys):
@@ -21,9 +22,13 @@ def update_camera(game, keys):
         game.camera.z -= sin_y * CAMERA_MOVEMENT_SPEED
     
     if keys[py.K_LSHIFT]:
-        game.camera.y -= CAMERA_MOVEMENT_SPEED
+        if game.paused:
+            game.camera.y -= CAMERA_MOVEMENT_SPEED
     if keys[py.K_SPACE]:
-        game.camera.y += CAMERA_MOVEMENT_SPEED
+        if game.paused:
+            game.camera.y += CAMERA_MOVEMENT_SPEED
+        else:
+            jump(game)
 
 def handle_input(game: object) -> None:
     keys = py.key.get_pressed()
@@ -57,9 +62,10 @@ def handle_input(game: object) -> None:
         elif event.type == py.MOUSEMOTION:
             if game.mouse_locked:
                 yaw_movement, pitch_movement = event.rel
+                sensitivity = 0.3
 
-                game.camera.pitch -= pitch_movement
-                game.camera.yaw += yaw_movement
+                game.camera.pitch -= pitch_movement * sensitivity
+                game.camera.yaw += yaw_movement * sensitivity
 
                 game.camera.pitch = max(-90, min(90, game.camera.pitch))
                 game.camera.yaw %= 360

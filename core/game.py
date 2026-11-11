@@ -19,6 +19,8 @@ class Game:
         self.mouse_locked = True
         py.event.set_grab(True)
         py.mouse.set_visible(False)
+
+        self.y_vel = 0
         
         self.width = WIDTH
         self.height = HEIGHT
@@ -43,6 +45,12 @@ class Game:
                 1, 20, 10,
                 yaw=20
             ),
+        ] + [
+            Cube(
+                150 + 200 * x, 0, 0,
+                50, 10, 50
+            )
+            for x in range(10)
         ]
 
         self.camera = Camera()
